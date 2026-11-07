@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Create Account{% endblock %}
+{% block content %}<section class="form-page"><div class="form-intro"><span class="eyebrow">Welcome to WorkDone</span><h1>Make your next move.</h1><p>Create an applicant account or register as an invited hiring board member.</p><div class="notice">Board accounts require an invitation code from the site administrator.</div></div>
+<form class="form-card" method="post">
+<h2>Create your account</h2>
+<label>Account type<select name="role" id="roleSelect"><option value="applicant">Applicant</option><option value="board">Hiring Board Member</option></select></label>
+<label>Full name<input name="name" required maxlength="100" placeholder="Your full name"></label>
+<label>Email address<input type="email" name="email" required placeholder="you@example.com"></label>
+<label>Phone number<input name="phone" type="tel" placeholder="+91"></label>
+<label>Password<input type="password" name="password" required minlength="8" placeholder="At least 8 characters"></label>
+<div id="inviteField" class="hidden"><label>Board invitation code<input name="invite_code" autocomplete="off" placeholder="Enter your invitation code"></label></div>
+<button class="button full" type="submit">Create account</button><p class="form-bottom">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+</form></section>{% endblock %}
