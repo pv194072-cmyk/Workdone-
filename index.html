@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% block title %}Find Your Next Opportunity{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">A smarter way to build careers</span>
+    <h1>Great talent.<br><em>Great work.</em><br>Done together.</h1>
+    <p>WorkDone brings technical applicants and hiring teams together in one simple, professional space.</p>
+    <div class="hero-actions"><a class="button" href="{{ url_for('jobs') }}">Explore technical jobs</a><a class="button button-light" href="{{ url_for('register') }}">Create an account</a></div>
+    <div class="trust-line">Built for developers, engineers and technology teams.</div>
+  </div>
+  <div class="hero-card">
+    <div class="mini-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="mini-label">WORKDONE / TALENT</span></div>
+    <div class="profile-preview"><div class="avatar">JD</div><div><strong>Junior Developer</strong><span>Technical talent profile</span></div><span class="status">Profile</span></div>
+    <div class="progress-label"><span>Skills profile</span><b>Ready to grow</b></div><div class="progress"><span></span></div>
+    <div class="skill-pills"><span>Python</span><span>JavaScript</span><span>SQL</span></div>
+    <div class="match-box"><span class="match-icon">✦</span><div><b>One place for the next step</b><small>Apply, connect and interview.</small></div></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-heading"><span class="eyebrow">Two ways to get started</span><h2>One platform. Two perspectives.</h2><p>Whether you're looking for an opportunity or finding your next teammate.</p></div>
+  <div class="two-cards">
+    <article class="feature-card"><div class="feature-icon">↗</div><h3>For applicants</h3><p>Create a profile, share your education and technical skills, apply for openings and follow interview updates.</p><a href="{{ url_for('register') }}">Join as an applicant →</a></article>
+    <article class="feature-card dark-card"><div class="feature-icon">⌘</div><h3>For hiring board</h3><p>Publish technical roles, review applications, shortlist talent and schedule online or in-person interviews.</p><a href="{{ url_for('register') }}">Board member access →</a></article>
+  </div>
+</section>
+<section class="section jobs-section"><div class="section-heading"><span class="eyebrow">Opportunities</span><h2>Latest technical openings</h2></div>
+{% if jobs %}<div class="job-grid">{% for job in jobs %}<article class="job-card"><span class="job-tag">TECH ROLE</span><h3>{{ job.title }}</h3><p>{{ job.description[:150] }}{% if job.description|length > 150 %}…{% endif %}</p><div class="muted">{{ job.location or 'Location not specified' }}</div><a href="{{ url_for('jobs') }}">View opening →</a></article>{% endfor %}</div>{% else %}<div class="empty-state">New opportunities will appear here when the hiring board publishes them.</div>{% endif %}
+<a class="text-link" href="{{ url_for('jobs') }}">View all technical jobs →</a></section>
+{% endblock %}
